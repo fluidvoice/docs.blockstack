@@ -10,6 +10,7 @@ import dynamic from 'next/dynamic';
 const SearchBox = dynamic(() => import('./search'));
 import { SIDEBAR_WIDTH } from '@common/constants';
 import { HEADER_HEIGHT } from '@components/header';
+import StatusCheck from './status-check';
 
 const Wrapper = ({ width = `${SIDEBAR_WIDTH}px`, children, ...rest }: any) => (
   <Box
@@ -118,6 +119,7 @@ const Section = ({ section, isLast, ...rest }: any) => {
 const SideNav = ({ ...rest }: any) => {
   return (
     <Wrapper {...rest}>
+      <StatusCheck />
       {routes.map((section, sectionKey, arr) => (
         <Section key={sectionKey} section={section} isLast={sectionKey === arr.length - 1} />
       ))}
